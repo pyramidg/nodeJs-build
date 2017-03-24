@@ -1,7 +1,7 @@
 
 // Building a Webites with Nodejs and expressjs
 // using nodejs features with in express
-// accessing data 
+// accessing data
 
 var express = require('express');
 var app = express();
@@ -11,11 +11,13 @@ app.set('port', process.env.PORT || 4000);
 
 app.get('/', function(req, res) {
   var info = '';
-  dataFile.speakers.forEach(function(item) {
+  dataFile.directory.forEach(function(item) {
       info += `
       <li>
-        <h2>${item.name}</h2>
-        <p>${item.summary}</p>
+        <h2>${item.first_name}</h2>
+        <p>${item.para}</p>
+        <img src="${item.img}"></img>
+
       </li>
 
       `;
