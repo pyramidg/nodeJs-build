@@ -1,11 +1,14 @@
 var express = require('express');
 var app = express();
+var dataFile = require('./data/data.json');
+
+app.set('port', process.env.PORT || 4000);
 
 app.get('/', function(req, res) {
-  res.send('<h1>Web Studio Place</h1>');
+  res.send('<h1> Web Studio Place</h1>');
 });
 
-var server = app.listen(4000, function() {
+var server = app.listen(app.get('port'), function() {
   console.log('Listening on port 4000');
 });
 
