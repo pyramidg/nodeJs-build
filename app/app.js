@@ -8,27 +8,16 @@ var app = express();
 var dataFile = require('./data/data.json');
 
 app.set('port', process.env.PORT || 4000);
+// setting dataFile into appData  in order to call it in js files
+app.set('appData', dataFile);
 
-app.get('/', function(req, res) {
-  var info = '';
-  dataFile.directory.forEach(function(item) {
-      info += `
-      <li>
-        <h2>${item.first_name}</h2>
-        <p>${item.para}</p>
-        <img src="${item.img}"></img>
+// require js files
+app.use(require('./routes/index'));
+app.use(require('./routes/directory'));
 
-      </li>
 
-      `;
 
-  })
-  res.send(`
-    <h1> Web Studio Place</h1>
-    ${info}
-    `);
-});
-
+// createServer
 var server = app.listen(app.get('port'), function() {
   console.log('Listening on port 4000');
 });
